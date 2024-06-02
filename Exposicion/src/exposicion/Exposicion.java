@@ -14,9 +14,14 @@ public class Exposicion {
 
     /**
      * @param args the command line arguments
+     * 
+     * 
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        
+        
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese su nombre: ");
         String nombre = entrada.nextLine();
@@ -73,7 +78,8 @@ public class Exposicion {
             System.out.println("---Bienvenido a la App bancaria de "+banco.getNombreBanco()+"---");
             System.out.println("Opcion 1: Ver sus datos\nOpcion 2: Ver su monto actual");
             System.out.println("Opcion 3: Ver monto en dolares\nOpcion 4: Hacer deposito");
-            System.out.println("Opcion 5: Hacer transferencia\nOpcion 6: Ver si es elegible para un prestamo\nOpcion 7: Salir");
+            System.out.println("Opcion 5: Hacer transferencia\nOpcion 6: Ver si es elegible para un prestamo\nOpcion 7: Actualizar datos de usuario");
+            System.out.println("Opcion 8: Salir");
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1-> {
@@ -138,6 +144,10 @@ public class Exposicion {
                     break;
                 }
                 case 7-> {
+                    Actualizar (persona1);
+                    break;
+                }
+                case 8-> {
                     System.out.println("Ha salido de la aplicacion");
                     break;
                 }
@@ -146,8 +156,58 @@ public class Exposicion {
                     break;
                 }
             }
-        } while (opcion!=7);
+        } while (opcion!=8);
+    }
+    
+    public static void Actualizar (Persona persona1){
+        Scanner read = new Scanner (System.in);
+        
+        int newEdad = 0;
+        int newIngreso = 0;
+        
+        System.out.println("Escoja el tipo de dato que desea actualizar/cambiar");
+        System.out.println("1. Cambiar/Actualizar Edad");
+        System.out.println("2. Cambiar/Actualizar Ingreso");
+        int op = read.nextInt();
+        
+        while (op < 0 || op > 2){
+            System.out.print("Ingrese una opcion validad: ");
+            op = read.nextInt();
+        }
+        
+        switch (op){
+            case 1 -> {
+                System.out.println("Su edad ingresada fue: " + persona1.getEdad());
+                System.out.println("Ingrese su nueva edad: ");
+                newEdad = read.nextInt();
+                
+                while (newEdad < 18){
+                    System.out.println("Su edad debe ser mayor a 18");
+                    System.out.println("Ingrese nuevamente su nueva edad: ");
+                    newEdad = read.nextInt();
+                }
+                persona1.setEdad(newEdad);
+                System.out.println("Su edad ha sido actualizada: " +persona1.getEdad());
+                System.out.println("");
+            }
+            case 2 -> {
+                System.out.println("Su ingreo ingresada fue: " + persona1.getIngreso());
+                System.out.println("Ingrese su nuevo ingreso: ");
+                newIngreso = read.nextInt();
+                
+                while (newIngreso < 0){
+                    System.out.println("Su ingreso debe de ser mayor a 0");
+                    System.out.println("Ingrese nuevamente su nuevo ingreso: ");
+                    newIngreso = read.nextInt();
+                }
+                persona1.setIngreso(newIngreso);
+                System.out.println("Su ingreso ha sido actualizado: " +persona1.getIngreso());
+                System.out.println("");
+            }
+                
+        }
         
     }
+    
     
 }
