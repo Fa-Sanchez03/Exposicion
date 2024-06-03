@@ -9,8 +9,10 @@ package exposicion;
  * @author fasan
  */
 public class Banco {
-    String nombreBanco;
-    int montoActual;
+    
+    private String nombreBanco;
+    private int montoActual;
+    
     public Banco() {
         
     }
