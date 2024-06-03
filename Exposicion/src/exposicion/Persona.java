@@ -9,9 +9,11 @@ package exposicion;
  * @author fasan
  */
 public class Persona {
-    String nombre;
-    int ingreso;
-    int edad;
+    
+    private String nombre;
+    private int ingreso;
+    private int edad;
+    
     public Persona () {
         
     }
